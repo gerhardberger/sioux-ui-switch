@@ -1,0 +1,48 @@
+.switch {
+	-webkit-user-select: none;
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	height: 30px;
+	width: 90px;
+	border: 1px solid #CCC;
+	border-radius: 16px;
+	overflow: hidden;
+	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+.switch > .wrapper {
+	height: 100%;
+	width: 535px;
+	-webkit-transform: translateX(-60px);
+}
+.switch > .wrapper > .on, .switch > .wrapper > .circle, .switch > .wrapper > .off {
+	position: relative;
+	display: inline-block;
+}
+.switch > .wrapper > .on, .switch > .wrapper > .off {
+	padding: 10px 30px 10px 16px;
+	z-index: 4;
+}
+.switch > .wrapper > .on {
+	color: white;
+	background-color: rgb(146, 146, 146);
+	-webkit-transform: translateY(-9px);
+}
+.switch > .wrapper > .off {
+	color: #999;
+	-webkit-transform: translate(-38px, -9px);
+}
+.switch > .wrapper > .circle {
+	border: 1px solid #999;
+	width: 30px;
+	height: 30px;
+	border-radius: 16px;
+	margin-top: -1px;
+	background-color: whitesmoke;
+	-webkit-transform: translateX(-23px);
+	z-index: 10;
+}
+
+.switch.active > .wrapper > .circle {
+	background-color: rgb(232, 232, 232);
+}

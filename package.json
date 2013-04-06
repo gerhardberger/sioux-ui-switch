@@ -1,0 +1,25 @@
+{
+    "name": "sioux-ui-switch",
+    "version": "0.0.5",
+    "description": "UISwitch module for sioux",
+    "main": "index.js",
+    "dependencies": {
+        "inherits": "*",
+        "insert-css": "*",
+        "sioux-ui": "*"
+    },
+    "keywords": [
+        "sioux",
+        "ui",
+        "switch"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/gerhardberger/sioux-ui-switch.git"
+    },
+    "author": {
+        "name": "Gerhard Berger",
+        "email": "93.morph@gmail.com",
+        "url": "https://twitter.com/gerhard_berger"
+    }
+}
