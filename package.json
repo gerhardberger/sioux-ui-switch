@@ -1,6 +1,6 @@
 {
     "name": "sioux-ui-switch",
-    "version": "0.0.5",
+    "version": "0.0.7",
     "description": "UISwitch module for sioux",
     "main": "index.js",
     "dependencies": {

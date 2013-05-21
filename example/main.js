@@ -1,6 +1,6 @@
 var UISwitch = require('../index.js');
-var uiswitch = new UISwitch(document.querySelector('.switch'));
-
+var uiswitch = new UISwitch(document.querySelector('.screen'));
+window.uiswitch = uiswitch;
 uiswitch
 .on('tap', function (event) {
 	console.log('Tapped!');

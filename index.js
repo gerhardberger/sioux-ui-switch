@@ -3,9 +3,16 @@ var UI = require('sioux-ui');
 var insertCss = require('insert-css');
 var fs = require('fs');
 
+var html = fs.readFileSync(__dirname + '/struct.html');
+var css = fs.readFileSync(__dirname + '/style.css');
+insertCss(css);
+
 function UISwitch (element) {
 	var self = this;
-	self.element = element;
+
+	element.innerHTML += html;
+
+	self.element = element.querySelector('.switch');
 	self._moveStartTouch = { pageX: undefined, pageY: undefined };
 	self.state = false;
 
@@ -13,12 +20,12 @@ function UISwitch (element) {
 	self.TAP_BOUND_X = 1;
 	self.TAP_BOUND_Y = 15;
 
-	var wrapper = element.querySelector('.wrapper');
-	var switchWidth = element.clientWidth;
+	var wrapper = self.element.querySelector('.wrapper');
+	var switchWidth = self.element.clientWidth;
 	var circleWidth = wrapper.querySelector('.circle').clientWidth;
 
 	self.on('touchstart', function (event) {
-		element.classList.add('active');
+		self.element.classList.add('active');
 		self._moveStartTouch.pageX = event.changedTouches[0].pageX;
 		self._moveStartTouch.pageY = event.changedTouches[0].pageY;
 	});
@@ -41,15 +48,17 @@ function UISwitch (element) {
 	});
 
 	self.on('touchend', function (event) {
-		element.classList.remove('active');
+		self.element.classList.remove('active');
 		if (!self._moveStartTouch.pageX && !self._moveStartTouch.pageY) return;
 		
 		var translate = wrapper.getAttribute('style');
 		if (!translate) return;
 
 		var n = parseInt(translate.match(/\(.*\)/g)[0].slice(1,-1), 10);
-		if (!(n === 0 || n === (circleWidth - switchWidth)))
-			self.setState(n + (switchWidth - circleWidth) > (switchWidth - circleWidth) / 2);
+
+		//if (!(n === 0 || n === (circleWidth - switchWidth)))
+
+		self.setState(n + (switchWidth - circleWidth) > (switchWidth - circleWidth) / 2);
 	});
 
 	self.on('tap', function (event) {
@@ -81,9 +90,5 @@ UISwitch.prototype.setState = function (state) {
 	};
 	wrapper.addEventListener('webkitTransitionEnd', transitionEndHandler, false);
 };
-
-
-var css = fs.readFileSync(__dirname + '/style.css');
-insertCss(css);
 
 module.exports = UISwitch;

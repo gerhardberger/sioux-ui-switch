@@ -7,21 +7,12 @@ The `UISwitch` class lets you create On/Off buttons, similar to [the iOS one](ht
 #### Inheriths from:
 - sioux-ui
 
-html:
-``` html
-<div class="switch">
-  <div class="wrapper">
-    <div class="on">ON</div>
-    <div class="circle"></div>
-    <div class="off">OFF</div>
-  </div>
-</div>
-```
 
 javascript:
 ``` js
 var UISwitch = require('sioux-ui-switch');
-var uiswitch = new UISwitch(document.querySelector('.switch'));
+var uiswitch = new UISwitch(document.querySelector('.container'));
+// document.querySelector('.container') is the element in which the switch will be appended
 
 uiswitch
 .on('tap', function (event) {
